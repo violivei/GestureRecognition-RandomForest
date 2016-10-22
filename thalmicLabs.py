@@ -77,12 +77,12 @@ def main():
 		error_rate = 1 - accuracy
 		print error_rate
 
-		with open('RandomForestRegressor', 'wb') as f:
+		with open('RandomForestClassifier', 'wb') as f:
 			cPickle.dump(model, f)
 	else:
 		data = pd.read_csv(os.path.join(os.path.dirname(__file__), "test_dataset.csv"), delimiter=',', encoding="utf-8-sig")
 		ground_truth = data["class"].as_matrix()
-		with open('RandomForestRegressor', 'rb') as f:
+		with open('RandomForestClassifier', 'rb') as f:
 			rf = cPickle.load(f)
 			predictions = rf.predict(data[data.columns.difference(["class"])])
 			predictions.tofile("results.csv", sep='\n', format='%.1f')
