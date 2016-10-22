@@ -40,14 +40,13 @@ def main():
 	var1 = sys.argv[1]
 
 	if(var1 == 'train'):
+		# Use this function only once
 		load_data()
+		# Read data from .csv file
 		data = pd.read_csv(os.path.join(os.path.dirname(__file__), 'example.csv'),index_col=None, header=0)
-		#data = data.apply(lambda f : to_number(f[0]),axis=1)
-		print data.isnull().sum()
+		# Usually we assign missing values using the mean of each col from the training data(for numeric attributes), since missing points were not above 10% of data, I just decided to assign zero to them, to simplify things (I took a risk of building a biased model doing so).
 		data = data.apply(lambda x: x.fillna(0),axis=0)
-		print data.isnull().sum()
 
-		########################################################
 		# Generate the training set.  Set random_state to be able to replicate results.
 		# Select anything not in the training set and put it in the testing set.
 		msk = np.random.rand(len(data)) < 0.8
@@ -77,8 +76,6 @@ def main():
 		accuracy = accuracy_score(validation["class"], predictions, normalize=False) / float(validation["class"].size)
 		error_rate = 1 - accuracy
 		print error_rate
-
-		########################################################
 
 		with open('RandomForestRegressor', 'wb') as f:
 			cPickle.dump(model, f)
