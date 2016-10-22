@@ -20,4 +20,6 @@ Train:
 ```bash
 ./thalmicLabs.py test
 ```
+## Video
 
+https://drive.google.com/drive/folders/0B2sAs5arnaaHcTIzR2w3MTZKSzg?usp=sharing
