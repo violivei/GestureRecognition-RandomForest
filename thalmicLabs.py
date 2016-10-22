@@ -35,13 +35,6 @@ def load_data():
 	data['class'] = list_
 	data.to_csv('example.csv', index=False)
 
-def to_number(s):
-	try:
-		s1 = float(s)
-		return s1
-	except ValueError:
-		return s
-
 def main():
 
 	var1 = sys.argv[1]
