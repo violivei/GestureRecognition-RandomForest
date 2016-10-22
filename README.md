@@ -12,12 +12,12 @@
 Train:
 
 ```bash
-./tahmicLabs.py train
+./thalmicLabs.py train
 ```
 
 ## Evaluating
 
 ```bash
-./tahmicLabs.py test
+./thalmicLabs.py test
 ```
 
