@@ -96,6 +96,7 @@ def main():
 			rf = cPickle.load(f)
 			predictions = rf.predict(data[data.columns.difference(["class"])])
 			predictions.tofile("results.csv", sep='\n', format='%.1f')
+			ground_truth.tofile("ground_truth.csv", sep='\n', format='%.1f')
 			df = pd.DataFrame({'predictions': predictions, 'ground_truth': ground_truth})
 			print predictions
 			print ground_truth
@@ -105,6 +106,7 @@ def main():
 			# Compute the error.
 			accuracy = accuracy_score(ground_truth, predictions, normalize=False) / float(ground_truth.size)
 			error_rate = 1 - accuracy
+			print "Test Error:"
 			print error_rate
 
 if __name__ == "__main__":
