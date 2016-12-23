@@ -67,7 +67,7 @@ def main():
 		model = RandomForestClassifier(n_estimators=100)
 
 		# Fit the model to the data.
-		model.fit(data[data.columns.difference(['class'])], data["class"])
+		model.fit(train[train.columns.difference(['class'])], train["class"])
 
 		# Make predictions.
 		predictions = model.predict(validation[validation.columns.difference(['class'])])
